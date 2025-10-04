@@ -1,12 +1,23 @@
 "use client"
 
+import * as React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function AgentPage() {
-    const [keywords, setKeywords] = useState("");
-    const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(1000);
+// Same as Emils /agent page but used for updating an agent. With some tinkering probably could be the same page as /agent, but for now I made another copy
+// -----------------------------------------------------------------------------
+
+export default function UpdateAgentPage({ params }: { params: Promise<{ id: string }> }) {
+
+    // Get agent data from localStorage by using ID from the dynamic route
+    const { id } = React.use(params);
+    const raw = localStorage.getItem(`agent:${id}`);
+    const agent = raw ? JSON.parse(raw) : undefined;
+
+    // Populate with existing information
+    const [keywords, setKeywords] = useState(agent.keywords);
+    const [minPrice, setMinPrice] = useState(agent.minPrice);
+    const [maxPrice, setMaxPrice] = useState(agent.maxPrice);
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -52,10 +63,6 @@ export default function AgentPage() {
                     onClick={async () => {
                     setIsLoading(true);
                     try {
-                        const id =
-                            typeof crypto !== "undefined" && "randomUUID" in crypto
-                                ? (crypto as any).randomUUID()
-                                : `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 
                         const agent = {
                             id,
@@ -65,27 +72,19 @@ export default function AgentPage() {
                             createdAt: new Date().toISOString(),
                         };
 
-                        // store individual agent
+                        // Store the updated agent
                         localStorage.setItem(`agent:${id}`, JSON.stringify(agent));
-
-                        // maintain a simple index of agent ids
-                        const raw = localStorage.getItem("agents");
-                        const agentsIndex: string[] = raw ? JSON.parse(raw) : [];
-                        if (!agentsIndex.includes(id)) {
-                            agentsIndex.push(id);
-                            localStorage.setItem("agents", JSON.stringify(agentsIndex));
-                        }
 
                         router.push(`/manage-agents`);
                     } catch (err) {
-                        console.error("Failed to create agent in localStorage", err);
+                        console.error("Failed to update agent in localStorage", err);
                     } finally {
                         setIsLoading(false);
                     }
                 }}
-            >
-                {isLoading ? "Loading..." : "Create Agent"}
-            </button>
+                >
+                {isLoading ? "Loading..." : "Update Agent"}
+                </button>
             </div>
         </main>
     );
