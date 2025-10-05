@@ -67,17 +67,17 @@ export default function AgentPage() {
                 localStorage.setItem("agents", JSON.stringify(agentsIndex));
               }
 
-              router.push("/");
+                router.push(`/manage-agents`);
             } catch (err) {
-              console.error("Failed to create agent in localStorage", err);
+                console.error("Failed to create agent in localStorage", err);
             } finally {
-              setIsLoading(false);
+                setIsLoading(false);
             }
-          }}
+        }}
         >
-          {isLoading ? "Loading..." : "Create Agent"}
-        </button>
-      </div>
-    </main>
-  );
+                {isLoading ? "Loading..." : "Create Agent"}
+            </button>
+            </div>
+        </main>
+    );
 }
