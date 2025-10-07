@@ -1,5 +1,7 @@
 "use client";
 
+import { ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface Product {
@@ -10,9 +12,12 @@ interface Product {
   url: string;
 }
 
+
+
 export default function ProductPage() {
   const [product, setProduct] = useState<Product | null>(null);
-
+  const router = useRouter();
+  
   useEffect(() => {
     const storedProduct = localStorage.getItem("currentProduct");
     if (storedProduct) {
@@ -22,14 +27,21 @@ export default function ProductPage() {
 
   if (!product) {
     return (
-      <main className="mx-auto max-w-3xl px-4 py-8 pt-20 bg-white text-gray-900">
+      <main className="mx-auto max-w-3xl px-4 py-8 bg-white text-gray-900">
         <p>Loading product...</p>
       </main>
     );
   }
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-8 pt-20 bg-white text-gray-900">
+    <main className="mx-auto max-w-3xl px-4 py-8 bg-white text-gray-900">
+            <div className="flex flex-row items-center mb-6">
+          <button className="mr-4 p-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300"
+              onClick={() => router.back()}>
+              <ArrowLeft className="w-4 h-4 mr-1" />
+          </button>
+  
+      </div>
       <div className="flex flex-col md:flex-row gap-6">
         {/* Product Image */}
         <div className="flex-1">

@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
 // Same as Emils /agent page but used for updating an agent. With some tinkering probably could be the same page as /agent, but for now I made another copy
 // -----------------------------------------------------------------------------
@@ -22,8 +23,14 @@ export default function UpdateAgentPage({ params }: { params: Promise<{ id: stri
     const [isLoading, setIsLoading] = useState(false);
 
     return (
-        <main className="mx-auto max-w-2xl px-4 py-8 pt-20 bg-white text-gray-900">
-            <h2 className="text-2xl font-bold mb-6">Agent configuration</h2>
+        <main className="mx-auto max-w-2xl px-4 py-8 bg-white text-gray-900">
+        <div className="flex flex-row items-center mb-6">
+            <button className="mr-4 p-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300"
+                onClick={() => router.back()}>
+                <ArrowLeft className="w-4 h-4 mr-1" />
+            </button>
+            <h2 className="text-2xl font-bold">Agent configuration</h2>
+        </div>
             <div className="flex flex-col gap-4">
                 <label className="font-medium">Keywords</label>
                 <input
