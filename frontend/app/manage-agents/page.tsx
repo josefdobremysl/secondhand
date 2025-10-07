@@ -30,7 +30,7 @@ export default function ManageAgentsPage() {
     };
 
     return (
-        <main className="mx-auto max-w-2xl px-4 py-8 pt-20 bg-white text-gray-900">
+        <main className="mx-auto max-w-2xl px-4 py-8 pt-20 bg-white text-secondblack">
 
             {/* Page title */}
             <h2 className="text-2xl font-bold mb-6">Manage agents</h2>
@@ -41,7 +41,7 @@ export default function ManageAgentsPage() {
             })}
 
             {/* Add new agent button, works, but placehodler so far since not sure if this will be located here */}
-            <button className="mr-auto px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700"
+            <button className="mr-auto px-4 py-2 rounded-md bg-discount text-white hover:bg-discount-dark"
                 onClick={() => router.push("/agent")}>
                 Add agent
             </button>

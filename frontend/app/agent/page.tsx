@@ -11,7 +11,7 @@ export default function AgentPage() {
   const router = useRouter();
 
   return (
-    <main className="mx-auto max-w-2xl px-4 py-8 pt-20 bg-white text-gray-900">
+    <main className="mx-auto max-w-2xl px-4 py-8 pt-20 bg-white text-secondblack">
       <h2 className="text-2xl font-bold mb-6">Agent configuration</h2>
       <div className="flex flex-col gap-4">
         <label className="font-medium">Keywords</label>
@@ -20,7 +20,7 @@ export default function AgentPage() {
           placeholder="Keywords"
           value={keywords}
           onChange={(e) => setKeywords(e.target.value)}
-          className="border border-gray-300 rounded-md p-2"
+          className="w-full box-border border border-handgray rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-discount"
         />
 
         <div className="flex justify-between">
@@ -34,7 +34,7 @@ export default function AgentPage() {
             placeholder="Min Price"
             value={minPrice}
             onChange={(e) => setMinPrice(Number(e.target.value))}
-            className="w-full box-border border border-gray-300 rounded-md p-2"
+            className="w-full box-border border border-handgray rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-discount"
           />
           <span className="self-center text-l">-</span>
           <input
@@ -42,13 +42,13 @@ export default function AgentPage() {
             placeholder="Max Price"
             value={maxPrice}
             onChange={(e) => setMaxPrice(Number(e.target.value))}
-            className="w-full box-border border border-gray-300 rounded-md p-2"
+            className="w-full box-border border border-handgray rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-discount"
           />
         </div>
       </div>
       <div className="mt-4 flex justify-end">
         <button
-          className="px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700"
+          className="px-4 py-2 rounded-md bg-discount text-white hover:bg-discount-dark"
           onClick={async () => {
             setIsLoading(true);
             try {
