@@ -29,6 +29,7 @@ export default function Page() {
   const [items, setItems] = useState<VintedItem[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [agents, setAgents] = useState<Agent[]>([]);
+  const [selectedAgentId, setSelectedAgentId] = useState<string | null>(null); // 🆕 přidáno
 
   // Load saved agents from localStorage
   useEffect(() => {
@@ -68,9 +69,6 @@ export default function Page() {
   return (
     <main className="mx-auto max-w-7xl px-4 py-4 pt-4 bg-white text-gray-900">
 
-      {/* Header title */}
-      <h2 className="text-xl font-bold mb-2">Search Items</h2>
-
       {/* Dropdown Options */}
       <div className="w-full flex flex-col mb-4">
         <button
@@ -102,12 +100,18 @@ export default function Page() {
             {agents.map((agent) => (
               <button
                 key={agent.id}
-                className="w-full px-4 py-3 bg-indigo-600 text-white hover:bg-indigo-700 rounded"
-                onClick={() =>
+                className={`w-full px-4 py-3 rounded transition 
+                  ${
+                    selectedAgentId === agent.id
+                      ? "bg-indigo-800 text-white"
+                      : "bg-indigo-600 text-white hover:bg-indigo-700" // discout orange
+                  }`}
+                onClick={() => {
+                  setSelectedAgentId(agent.id); 
                   router.push(
                     `/?keywords=${encodeURIComponent(agent.keywords)}&min_price=${agent.minPrice}&max_price=${agent.maxPrice}`
-                  )
-                }
+                  );
+                }}
               >
                 {agent.keywords} ({agent.minPrice} - {agent.maxPrice})
               </button>
