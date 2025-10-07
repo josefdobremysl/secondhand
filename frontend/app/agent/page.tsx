@@ -11,6 +11,18 @@ export default function AgentPage() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
+  const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    // only allows numbers
+    if (/^\d*$/.test(newValue)) {
+      if (e.target.placeholder === "Max Price") {
+        setMaxPrice(newValue === "" ? 0 : Number(newValue));
+      } else {
+        setMinPrice(newValue === "" ? 0 : Number(newValue));
+      }
+    }
+  }
+
   return (
     <main className="mx-auto max-w-2xl px-4 py-8 bg-white text-gray-900">
       <div className="flex flex-row items-center mb-6">
@@ -37,18 +49,18 @@ export default function AgentPage() {
 
         <div className="flex flex-row sm:flex-row gap-4">
           <input
-            type="number"
+            type="text"
             placeholder="Min Price"
             value={minPrice}
-            onChange={(e) => setMinPrice(Number(e.target.value))}
+            onChange={(e) => handleChange(e)}
             className="w-full box-border border border-gray-300 rounded-md p-2"
           />
           <span className="self-center text-l">-</span>
           <input
-            type="number"
+            type="text"
             placeholder="Max Price"
             value={maxPrice}
-            onChange={(e) => setMaxPrice(Number(e.target.value))}
+            onChange={(e) => handleChange(e)}
             className="w-full box-border border border-gray-300 rounded-md p-2"
           />
         </div>
