@@ -1,7 +1,7 @@
 "use client";  
 
 import React from "react";
-import { User, Bell, Menu } from "lucide-react";
+import { User, Bell, Heart } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function Header() {
@@ -19,6 +19,13 @@ export default function Header() {
           {/* Menu icons */}
           <div className="flex items-center gap-4">
             <button
+              aria-label="Heart"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            >
+              <Heart size={18} />
+            </button>
+
+            <button
               aria-label="Notifications"
               className="relative inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-handgray-light focus:outline-none focus:ring-2 focus:ring-discount"
             >
@@ -35,12 +42,7 @@ export default function Header() {
               <User size={18} />
             </button>
 
-            <button
-              aria-label="Open menu"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-handgray-light focus:outline-none focus:ring-2 focus:ring-discount"
-            >
-              <Menu size={18} />
-            </button>
+
           </div>
         </div>
       </div>
