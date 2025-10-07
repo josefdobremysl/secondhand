@@ -21,6 +21,18 @@ export default function UpdateAgentPage({ params }: { params: Promise<{ id: stri
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
 
+    const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = e.target.value;
+        // only allows numbers
+        if (/^\d*$/.test(newValue)) {
+        if (e.target.placeholder === "Max Price") {
+            setMaxPrice(newValue === "" ? 0 : Number(newValue));
+        } else {
+            setMinPrice(newValue === "" ? 0 : Number(newValue));
+        }
+        }
+    }
+
     return (
         <main className="mx-auto max-w-2xl px-4 py-8 pt-20 bg-white text-gray-900">
             <h2 className="text-2xl font-bold mb-6">Agent configuration</h2>
@@ -41,18 +53,18 @@ export default function UpdateAgentPage({ params }: { params: Promise<{ id: stri
 
                <div className="flex flex-row sm:flex-row gap-4">
                     <input
-                        type="number"
+                        type="text"
                         placeholder="Min Price"
                         value={minPrice}
-                        onChange={(e) => setMinPrice(Number(e.target.value))}
+                        onChange={(e) => handleChange(e)}
                         className="w-full box-border border border-gray-300 rounded-md p-2"
                     />
                     <span className="self-center text-l">-</span>
                     <input
-                        type="number"
+                        type="text"
                         placeholder="Max Price"
                         value={maxPrice}
-                        onChange={(e) => setMaxPrice(Number(e.target.value))}
+                        onChange={(e) => handleChange(e)}
                         className="w-full box-border border border-gray-300 rounded-md p-2"
                     />
                 </div>
