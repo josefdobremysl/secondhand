@@ -3,6 +3,7 @@
 import AgentCard from "@/app/components/AgentCard";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { ArrowLeft } from "lucide-react";
 
 // Manage Agents Page for seeing all agents and editing them
 // -----------------------------------------------------------------------------
@@ -33,7 +34,13 @@ export default function ManageAgentsPage() {
         <main className="mx-auto max-w-2xl px-4 py-8 pt-20 bg-white text-secondblack">
 
             {/* Page title */}
-            <h2 className="text-2xl font-bold mb-6">Manage agents</h2>
+            <div className="flex flex-row items-center mb-6">
+                <button className="mr-4 p-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    onClick={() => router.back()}>
+                    <ArrowLeft className="w-4 h-4 mr-1" />
+                </button>
+                <h2 className="text-2xl font-bold">Manage agents</h2>
+            </div>
 
             {/* List out all the agent cards */}
             {agentIdList.map((agentId: string) => {
