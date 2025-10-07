@@ -35,7 +35,7 @@ export default function ManageAgentsPage() {
 
             {/* Page title */}
             <div className="flex flex-row items-center mb-6">
-                <button className="mr-4 p-2 rounded-md bg-handgray text-secondblack hover:handgray-light"
+                <button className="mr-4 p-2 rounded-md bg-handgray text-secondblack hover:bg-handgray-light"
                     onClick={() => router.back()}>
                     <ArrowLeft className="w-4 h-4 mr-1" />
                 </button>

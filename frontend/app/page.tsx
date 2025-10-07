@@ -67,7 +67,7 @@ export default function Page() {
   }, [keywords, min_price, max_price]);
 
   return (
-    <main className="mx-auto max-w-7xl px-4 py-4 pt-4 bg-white text-gray-900">
+    <main className="mx-auto max-w-7xl px-4 py-4 pt-4 bg-white text-secondblack">
 
       {/* Dropdown Options */}
       <div className="w-full flex flex-col mb-4">
@@ -103,8 +103,8 @@ export default function Page() {
                 className={`w-full px-4 py-3 rounded transition 
                   ${
                     selectedAgentId === agent.id
-                      ? "bg-indigo-800 text-white"
-                      : "bg-indigo-600 text-white hover:bg-indigo-700" // discout orange
+                      ? "bg-discount text-white"
+                      : "bg-handgray text-handgray-dark border-1 border-handgray-dark hover:bg-handgray-dark hover:text-handgray"
                   }`}
                 onClick={() => {
                   setSelectedAgentId(agent.id); 

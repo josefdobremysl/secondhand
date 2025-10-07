@@ -20,7 +20,7 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <button
               aria-label="Heart"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-handgray-light focus:outline-none focus:ring-2 focus:ring-discount"
             >
               <Heart size={18} />
             </button>
