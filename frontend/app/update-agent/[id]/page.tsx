@@ -35,9 +35,9 @@ export default function UpdateAgentPage({ params }: { params: Promise<{ id: stri
     }
 
     return (
-        <main className="mx-auto max-w-2xl px-4 py-8 bg-white text-gray-900">
+        <main className="mx-auto max-w-2xl px-4 py-8 bg-white text-secondblack">
         <div className="flex flex-row items-center mb-6">
-            <button className="mr-4 p-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300"
+            <button className="mr-4 p-2 rounded-md bg-handgray text-secondblack hover:bg-handgray-light"
                 onClick={() => router.back()}>
                 <ArrowLeft className="w-4 h-4 mr-1" />
             </button>
@@ -50,7 +50,7 @@ export default function UpdateAgentPage({ params }: { params: Promise<{ id: stri
                     placeholder="Keywords"
                     value={keywords}
                     onChange={(e) => setKeywords(e.target.value)}
-                    className="border border-gray-300 rounded-md p-2"
+                    className="w-full box-border border border-handgray rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-discount"
                 />
 
                 <div className="flex justify-between">
@@ -78,7 +78,7 @@ export default function UpdateAgentPage({ params }: { params: Promise<{ id: stri
             </div>
             <div className="mt-4 flex justify-end">
                 <button
-                    className="px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700"
+                    className="px-4 py-2 rounded-md bg-discount text-white hover:bg-discount-dark"
                     onClick={async () => {
                     setIsLoading(true);
                     try {

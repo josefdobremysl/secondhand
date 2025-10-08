@@ -1,13 +1,47 @@
 @import "tailwindcss";
 
+/*
+Defining the custom fonts
+*/
+@font-face {
+  font-family: Dosis;
+  src: url(/frontend/public/Dosis-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: Comfortaa;
+  src: url(/frontend/public/Comfortaa-VariableFont_wght.ttf);
+}
+
+
+/*
+Custom colors for Tailwind development
+you can reference these in any place by using the name after the dash
+*/
+@theme {
+  --color-discount: #e58a1f;
+  --color-discount-dark: #ad601a;
+  --color-handgray: #e8e6e6;
+  --color-handgray-dark: #b2b1b1;
+  --color-handgray-light: #f4f4f4;
+  --color-secondblack: #161413;
+  --color-secondblack-light: #2d2827;
+
+  --font-dosis: Dosis, sans-serif;
+  --font-dosis: Comfortaa, sans-serif;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: var(--color-secondblack);
 }
 
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Dosis, sans-serif;
+}
+
+h1, h2 {
+    font-family: Comfortaa, sans-serif;
 }

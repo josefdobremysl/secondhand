@@ -27,16 +27,16 @@ export default function ProductPage() {
 
   if (!product) {
     return (
-      <main className="mx-auto max-w-3xl px-4 py-8 bg-white text-gray-900">
+      <main className="mx-auto max-w-3xl px-4 py-8 pt-20 bg-white text-secondblack">
         <p>Loading product...</p>
       </main>
     );
   }
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-8 bg-white text-gray-900">
+    <main className="mx-auto max-w-3xl px-4 py-8 bg-white text-secondblack">
             <div className="flex flex-row items-center mb-6">
-          <button className="mr-4 p-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300"
+          <button className="mr-4 p-2 rounded-md bg-handgray text-secondblack hover:bg-handgray-light"
               onClick={() => router.back()}>
               <ArrowLeft className="w-4 h-4 mr-1" />
           </button>
@@ -62,17 +62,17 @@ export default function ProductPage() {
           {/* Link to original Vinted page as button */}
           <button
             onClick={() => window.open(product.url, "_blank")}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 w-max"
+            className="px-4 py-2 bg-discount text-white rounded-md hover:bg-discount-dark w-max"
           >
             Go to original Vinted page
           </button>
 
           {/* Additional info box */}
-          <div className="mt-4 p-4 border border-gray-300 rounded-md bg-gray-50">
+          <div className="mt-4 p-4 border border-handgray rounded-md bg-handgray-light">
             <h2 className="font-semibold mb-2">Product Details</h2>
             <p><strong>Title:</strong> {product.title}</p>
             <p><strong>Price:</strong> {product.price} {product.currency}</p>
-            <p><strong>URL:</strong> <a href={product.url} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">{product.url}</a></p>
+            <p><strong>URL:</strong> <a href={product.url} target="_blank" rel="noopener noreferrer" className="text-discount hover:underline">{product.url}</a></p>
           </div>
         </div>
       </div>

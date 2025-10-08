@@ -67,29 +67,29 @@ export default function Page() {
   }, [keywords, min_price, max_price]);
 
   return (
-    <main className="mx-auto max-w-7xl px-4 py-4 pt-4 bg-white text-gray-900">
+    <main className="mx-auto max-w-7xl px-4 py-4 pt-4 bg-white text-secondblack">
 
       {/* Dropdown Options */}
       <div className="w-full flex flex-col mb-4">
         <button
-          className="w-full px-4 py-3 text-center bg-gray-600 text-white hover:bg-gray-800 focus:outline-none"
+          className="w-full px-4 py-3 text-center bg-handgray text-secondblack hover:bg-handgray-dark focus:outline-none rounded-md"
           onClick={() => setDropdownOpen(prev => !prev)}
         >
           Agents
         </button>
 
         {dropdownOpen && (
-          <div className="mt-0 w-full bg-gray-300 p-2 flex flex-col gap-2 rounded-md">
+          <div className="mt-0 w-full bg-handgray p-2 flex flex-col gap-2 rounded-md">
             <div className="flex gap-2">
               <button
-                className="flex-1 px-4 py-3 bg-gray-600 text-white hover:bg-gray-800"
+                className="flex-1 px-4 py-3 bg-white text-secondblack hover:bg-handgray-dark"
                 onClick={() => router.push("/agent")}
               >
                 Create Agent
               </button>
 
               <button
-                className="flex-1 px-4 py-3 bg-gray-600 text-white hover:bg-gray-800"
+                className="flex-1 px-4 py-3 bg-white text-secondblack hover:bg-handgray-dark"
                 onClick={() => router.push("/manage-agents")}
               >
                 Manage
@@ -103,8 +103,8 @@ export default function Page() {
                 className={`w-full px-4 py-3 rounded transition 
                   ${
                     selectedAgentId === agent.id
-                      ? "bg-indigo-800 text-white"
-                      : "bg-indigo-600 text-white hover:bg-indigo-700" // discout orange
+                      ? "bg-discount text-white"
+                      : "bg-handgray text-handgray-dark border-1 border-handgray-dark hover:bg-handgray-dark hover:text-handgray"
                   }`}
                 onClick={() => {
                   setSelectedAgentId(agent.id); 
@@ -138,8 +138,8 @@ export default function Page() {
               />
             </button>
             <div className="p-2 sm:p-4">
-              <h3 className="text-sm sm:text-base font-semibold text-gray-700">{item.title}</h3>
-              <p className="text-gray-500 text-sm">{item.price} {item.currency}</p>
+              <h3 className="text-sm sm:text-base font-semibold text-secondblack">{item.title}</h3>
+              <p className="text-discount text-sm">{item.price} {item.currency}</p>
             </div>
           </div>
         ))}
